@@ -6,6 +6,8 @@ from schemas import UserCreate, UserLogin, Token
 from auth import hash_password, verify_password, create_token, get_current_user
 from requests import get
 from typing import Annotated
+import socket
+from datetime import datetime
 
 router = APIRouter()
 
@@ -45,3 +47,8 @@ def consultar(current_user: User = Depends(get_current_user)):
         raise HTTPException(401, "Usuário não autenticado")
     resposta = get("https://economia.awesomeapi.com.br/last/USD-BRL").json()
     return {"dados": resposta}
+
+@router.get("/health-check")
+def health_check():
+    return {"statusCode": 200, "timestamp": datetime.now().isoformat(),"hostname": socket.gethostname()}
+    
