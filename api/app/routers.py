@@ -5,6 +5,7 @@ from models import User
 from schemas import UserCreate, UserLogin, Token
 from auth import hash_password, verify_password, create_token, get_current_user
 from requests import get
+from typing import Annotated
 
 router = APIRouter()
 
@@ -40,5 +41,7 @@ def login(data: UserLogin, db: Session = Depends(get_db)):
 
 @router.get("/consultar")
 def consultar(current_user: User = Depends(get_current_user)):
-    resposta = get("https://economia.awesomeapi.com.br/last/USD-BRL", headers={"Authorization": "Bearer " + current_user.token}).json()
+    if not current_user:
+        raise HTTPException(401, "Usuário não autenticado")
+    resposta = get("https://economia.awesomeapi.com.br/last/USD-BRL").json()
     return {"dados": resposta}
