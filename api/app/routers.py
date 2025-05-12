@@ -40,7 +40,5 @@ def login(data: UserLogin, db: Session = Depends(get_db)):
 
 @router.get("/consultar")
 def consultar(current_user: User = Depends(get_current_user)):
-    resposta = get("https://economia.awesomeapi.com.br/last/USD-BRL").json()
-    if "authorization" not in current_user.headers:
-        raise HTTPException(status_code=403, detail="Authorization header missing")
+    resposta = get("https://economia.awesomeapi.com.br/last/USD-BRL", headers={"Authorization": "Bearer " + current_user.token}).json()
     return {"dados": resposta}
