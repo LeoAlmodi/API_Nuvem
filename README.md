@@ -13,11 +13,8 @@ Este repositório contém uma *API RESTful* desenvolvida em *FastAPI* com as seg
 
 1. Clone o repositório:
 ```bash
-git clone <link-do-repo>
-cd <nome-do-repo>
+docker pull arthurec/projeto01-nuvens
 ```
-
-1. *Configure as Variáveis de Ambiente* criando um arquivo .env na raiz:
 
 1. *Inicie o container*
 ```bash
@@ -31,6 +28,8 @@ docker compose up --build -d
 ## Vídeo de Execução da Aplicação
 
 ## Link Para o Docker Hub do Projeto
+
+https://hub.docker.com/r/arthurec/projeto01-nuvens
 
 ## Compose Final
 
