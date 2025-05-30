@@ -1,8 +1,6 @@
 services:
   api:
-    build:
-      context: ./api       # contexto = pasta api
-      dockerfile: Dockerfile
+    image: https://hub.docker.com/r/arthurec/projeto01-nuvens
     env_file: .env
     restart: always
     ports:
