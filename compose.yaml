@@ -1,6 +1,6 @@
 services:
   api:
-    image: https://hub.docker.com/r/arthurec/projeto01-nuvens
+    image: arthurec/projeto01-nuvens
     env_file: .env
     restart: always
     ports:
