@@ -1,6 +1,6 @@
 services:
   api:
-    image: arthurec/projeto01-nuvens
+    image: arthurec/projeto01-nuvens:latest
     env_file: .env
     restart: always
     ports:
